@@ -72,16 +72,11 @@ class Localization {
   TextSpan trSpan(
     String key, {
     Map<String, TextSpan>? namedArgs,
-    String? gender,
   }) {
     late String res;
     late TextSpan span;
 
-    if (gender != null) {
-      res = _gender(key, gender: gender);
-    } else {
-      res = _resolve(key);
-    }
+    res = _resolve(key);
 
     res = _replaceLinks(res);
 
@@ -157,7 +152,6 @@ class Localization {
         res = res.replaceAll(RegExp('{$key}'), value));
     return res;
   }
-
 
   TextSpan _replaceSpanNamedArgs(String res, Map<String, TextSpan>? args) {
     if (args == null || args.isEmpty) return TextSpan(text: res);
